@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A transparent OpenAIRE Graph trail from funded project to inspectable research outputs." />
+    <title>Open Trail | Research evidence, made inspectable</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">OT</span>
+        <div><strong>Open Trail</strong><span>Graph-native research evidence</span></div>
+      </div>
+      <div class="topbar-status"><span class="status-dot" aria-hidden="true"></span>Direct Graph V3</div>
+    </header>
+
+    <main class="shell">
+      <section class="runbar" aria-labelledby="run-heading">
+        <div>
+          <p class="eyebrow">From project to proof</p>
+          <h2 id="run-heading">Trace a funded project into records a decision-maker can inspect.</h2>
+        </div>
+        <form id="trail-form" class="trail-form">
+          <label for="project-id">OpenAIRE project ID</label>
+          <div class="form-controls">
+            <input id="project-id" name="project-id" autocomplete="off" spellcheck="false" />
+            <button id="run-trail" type="submit">Run trail</button>
+            <button id="load-sample" class="secondary" type="button">Official sample</button>
+          </div>
+        </form>
+      </section>
+
+      <p id="status" class="runtime-status" role="status" aria-live="polite">Ready to retrieve public source records.</p>
+      <p id="error-state" class="error-state" role="alert" hidden></p>
+
+      <section id="empty-state" class="empty-state">
+        <p class="eyebrow">Evidence boundary</p>
+        <h2>Observed records stay observed. Connected records stay connected. Inference is never smuggled in.</h2>
+        <p>Open Trail uses the OpenAIRE Graph V3 relationship filter to expose the source request, output types, and the records behind a project trail.</p>
+      </section>
+
+      <section id="workspace" hidden>
+        <article id="project-panel" class="project-panel"></article>
+
+        <section class="evidence-strip" aria-label="Evidence boundary">
+          <div><strong>Observed</strong><span>Project and output records returned by the Graph.</span></div>
+          <div><strong>Connected</strong><span>Outputs returned through the selected project relationship.</span></div>
+          <div><strong>Inferred</strong><span>None. This retrieval makes no impact or causal claim.</span></div>
+        </section>
+
+        <section id="count-grid" class="count-grid" aria-label="Output totals"></section>
+
+        <section class="trail-layout">
+          <div class="output-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Inspect the trail</p>
+                <h2>Source-bearing outputs</h2>
+              </div>
+              <a id="request-url" class="request-link" target="_blank" rel="noreferrer"></a>
+            </div>
+            <div id="output-list" class="output-list"></div>
+          </div>
+
+          <aside class="method-panel" aria-label="Method and export">
+            <p class="eyebrow">Method</p>
+            <h2>Enough context to verify, not a black-box summary.</h2>
+            <p>Every result comes from a direct Graph V3 request. The project ID, record types, and live request remain visible to the reviewer.</p>
+            <button id="export-evidence" class="secondary export" type="button">Export evidence packet</button>
+            <details>
+              <summary>What this does not claim</summary>
+              <p>Output counts do not prove impact, quality, or causality. Open Trail leaves those decisions to a human who can inspect the underlying records.</p>
+            </details>
+          </aside>
+        </section>
+      </section>
+    </main>
+    <footer>Open Trail is a transparent retrieval surface for the OpenAIRE Graph. It does not generate a research conclusion.</footer>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

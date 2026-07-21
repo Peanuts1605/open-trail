@@ -1,0 +1,11 @@
+{
+  "name": "open-trail",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "lint": "node --check app.js && node --check open-trail-core.js",
+    "serve": "python3 -m http.server 4178"
+  }
+}
