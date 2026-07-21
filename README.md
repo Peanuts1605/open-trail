@@ -31,6 +31,6 @@ retrieves public Graph V3 project and research-product responses directly from
 
 ## License
 
-The code is available under the [MIT License](./LICENSE). The contest story is
-licensed separately under CC BY 4.0 at
-[`docs/OPEN_TRAIL_CC_BY_STORY_2026-07-21.md`](./docs/OPEN_TRAIL_CC_BY_STORY_2026-07-21.md).
+All public project materials are available under CC BY 4.0, and the code is
+also available under MIT; see the [dual license](./LICENSE). The contest story
+is at [`docs/OPEN_TRAIL_CC_BY_STORY_2026-07-21.md`](./docs/OPEN_TRAIL_CC_BY_STORY_2026-07-21.md).
