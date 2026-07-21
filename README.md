@@ -3,7 +3,9 @@
 Open Trail turns a funded-project identifier into an inspectable OpenAIRE Graph
 trail: project record, linked output counts, source-bearing example records,
 and a clear boundary between what was observed, what was connected by the
-Graph, and what was not inferred.
+Graph, and what was not inferred. It ends with a reviewer handoff: inspect the
+linked datasets and software records before making a reuse, reproducibility, or
+funding decision.
 
 It is a small Theme C / Theme B candidate for the OpenAIRE AI Hackathon. It is
 not a generic research chat and it does not claim research impact from output
@@ -28,6 +30,8 @@ retrieves public Graph V3 project and research-product responses directly from
 - Observed: API-returned project and research-product records.
 - Connected: results returned by `relProjectId`.
 - Inferred: none until a human inspects the records and makes a separate claim.
+- Review next: the app makes the next inspection step visible without turning
+  record presence into a quality, impact, reuse, or causal conclusion.
 
 ## License
 

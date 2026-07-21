@@ -37,7 +37,9 @@ test("buildTrail preserves type counts and never manufactures inference", () => 
   assert.equal(trail.totals.outputs, 3);
   assert.equal(trail.totals.counts.dataset, 1);
   assert.equal(trail.outputs.length, 2);
+  assert.match(trail.review.next, /Inspect linked datasets and software records/);
   const packet = evidenceMarkdown(trail);
   assert.match(packet, /Inferred: none/);
   assert.match(packet, /Observed output count: 3/);
+  assert.match(packet, /Human review next/);
 });

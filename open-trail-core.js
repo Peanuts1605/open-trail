@@ -87,6 +87,12 @@ export function buildTrail({ project, summary, typedResponses = {}, retrievedAt 
       citations: Number(header.totalCitationsCount || 0),
       counts
     },
+    review: {
+      title: "Reviewer handoff",
+      summary: `${Number(header.numFound || 0)} linked outputs are available to inspect, including ${counts.dataset} dataset${counts.dataset === 1 ? "" : "s"} and ${counts.software} software record${counts.software === 1 ? "" : "s"}.`,
+      next: "Inspect linked datasets and software records before deciding whether a reproducibility, reuse, or funding review is warranted.",
+      boundary: "Record presence is not evidence of quality, impact, reuse, or causality."
+    },
     sources: {
       project: apiUrl(`projects/${encodeURIComponent(projectId)}`),
       outputs: apiUrl("research-products", {
@@ -116,6 +122,10 @@ export function evidenceMarkdown(trail) {
     "- Observed: project and output records returned by OpenAIRE Graph V3.",
     "- Connected: outputs returned by the relProjectId relationship filter.",
     "- Inferred: none. Open Trail does not make an impact or causal claim from this retrieval.",
+    "",
+    "## Human review next",
+    `- ${trail.review.next}`,
+    `- Boundary: ${trail.review.boundary}`,
     "",
     "## Sample outputs"
   ];

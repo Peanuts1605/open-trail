@@ -17,6 +17,7 @@ const elements = {
   error: document.querySelector("#error-state"),
   project: document.querySelector("#project-panel"),
   counts: document.querySelector("#count-grid"),
+  review: document.querySelector("#review-brief"),
   outputs: document.querySelector("#output-list"),
   request: document.querySelector("#request-url"),
   export: document.querySelector("#export-evidence")
@@ -104,6 +105,19 @@ function renderCounts(trail) {
   `).join("");
 }
 
+function renderReview(trail) {
+  const review = trail.review;
+  elements.review.innerHTML = `
+    <div>
+      <p class="eyebrow">${escapeHtml(review.title)}</p>
+      <h2>Choose the next check from what the Graph actually returned.</h2>
+    </div>
+    <p>${escapeHtml(review.summary)}</p>
+    <div class="review-next"><strong>Next</strong><span>${escapeHtml(review.next)}</span></div>
+    <p class="review-boundary">${escapeHtml(review.boundary)}</p>
+  `;
+}
+
 function renderOutputs(trail) {
   if (!trail.outputs.length) {
     elements.outputs.innerHTML = "<p class=\"muted\">No output records were returned for this project.</p>";
@@ -125,6 +139,7 @@ function renderTrail(trail) {
   currentTrail = trail;
   renderProject(trail);
   renderCounts(trail);
+  renderReview(trail);
   renderOutputs(trail);
   elements.request.href = trail.sources.outputs;
   elements.request.textContent = "Open source request";
