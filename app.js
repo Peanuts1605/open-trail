@@ -44,6 +44,12 @@ function setLoading(loading) {
   elements.run.textContent = loading ? "Tracing..." : "Run trail";
 }
 
+function clearTrail() {
+  currentTrail = null;
+  elements.workspace.hidden = true;
+  elements.empty.hidden = false;
+}
+
 async function getJson(url) {
   const response = await fetch(url, { headers: { Accept: "application/json" } });
   if (!response.ok) {
@@ -154,20 +160,22 @@ async function runTrail(value) {
   try {
     projectId = normalizeProjectId(value);
   } catch (error) {
+    clearTrail();
     elements.error.textContent = error.message;
     elements.error.hidden = false;
     setStatus("A project ID is needed before a trail can run.", "error");
     return;
   }
 
+  clearTrail();
+  elements.error.hidden = true;
   setLoading(true);
   setStatus("Retrieving source records from OpenAIRE Graph V3...", "loading");
   try {
     const trail = await retrieveTrail(projectId);
     renderTrail(trail);
   } catch (error) {
-    currentTrail = null;
-    elements.workspace.hidden = true;
+    clearTrail();
     elements.error.textContent = `${error.message} No claim was generated from unavailable source data.`;
     elements.error.hidden = false;
     setStatus("The source trail could not be retrieved.", "error");
